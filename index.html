@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Serenade: A Singing Style Conversion Framework Based On Audio Infilling</title>
+    <style>
+      body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+      }
+      header {
+        text-align: center;
+        padding: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        background-color: #4B3F72;
+        color: white;
+        margin-bottom: 40px;
+      }
+      table {
+        margin: auto;
+        width: 80%;
+      }
+      th, td {
+        padding: 10px;
+        text-align: left;
+        width: 20%;
+      }
+      th {
+        background-color: #4B3F72;
+        color: white;
+      }
+      div {
+          width: 80%;
+          padding: 10px;
+          margin: auto;
+        }
+      tbody tr:hover {
+        background-color: #eee;
+      }
+      .main-description {
+        padding: 20px;
+        background-color: #f9f9f9;
+        font-size: 18px;
+      }
+      .table-description {
+        padding: 20px;
+        background-color: #4B3F72;
+        color: white;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+        <header>
+          <h2>Serenade: A Singing Style Conversion Framework Based On Audio Infilling</h2>
+        </header>
+      </article>
+
+      <div style="width: 80%; text-align: center; margin: auto;">
+        <h2><u> Audio Samples</u></h2>
+        <h3>Lester Phillip Violeta, Wen-Chin Huang, Tomoki Toda</h3>
+        Nagoya University, Japan
+        <br>
+        <br>
+        All samples are available at <a href="https://drive.google.com/drive/u/4/folders/1pAu9blhrHOxCq8ceQ8t83vKq4ATSNikl">this Google Drive</a>.
+      </div>
+
+      <div class="table-description" style="width: 80%; margin: auto; text-align: center;">
+        Source singing style: Breathy
+      </div>
+      <table style="width: 80%; margin: auto;">
+        <tr>
+          <td style="width: 20%">Source</td>
+          <td style="width: 80%"><audio controls style="width: 100%"><source src="gt_final/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_gt.wav" type="audio/wav"></audio></td>
+        </tr>
+      </table>
+
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>System and Description</th>
+            <th>to Falsetto</th>
+            <th>to Mixed</th>
+            <th>to Pharyngeal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Target GT</td>
+            <td><audio controls><source src="gt_final/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_gt.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="gt_final/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_gt.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="gt_final/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_gt.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td>Reference Style</td>
+            <td><audio controls><source src="refs/00_Falsetto_reference.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="refs/00_Mixed_reference.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="refs/00_Pharyngeal_reference.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td>NU-SVC</td>
+              <td><audio controls><source src="nusvc/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Falsetto.wav" type="audio/wav"></audio></td>
+              <td><audio controls><source src="nusvc/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Mixed.wav" type="audio/wav"></audio></td>
+              <td><audio controls><source src="nusvc/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Pharyngeal.wav" type="audio/wav"></audio></td>
+          <tr>
+            <td>Ablation 1</td>
+            <td><audio controls><source src="ablation1/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="ablation1/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="ablation1/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+          </tr>
+        <tr>
+            <td>Ablation 2</td>
+              <td><audio controls><source src="ablation2/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+              <td><audio controls><source src="ablation2/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+              <td><audio controls><source src="ablation2/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+          </tr>
+        <tr>
+          <td>Ablation 3</td>
+            <td><audio controls><source src="ablation3/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="ablation3/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="ablation3/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+        </tr>
+        <tr>
+          <td>Serenade</td>
+            <td><audio controls><source src="serenade/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="serenade/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="serenade/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+        </tr>
+        <tr>
+          <td>Serenade (SiFiGAN)</td>
+            <td><audio controls><source src="serenade_sifigan/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="serenade_sifigan/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="serenade_sifigan/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <br>
+
+      
+      <div class="table-description" style="width: 80%; margin: auto; text-align: center;">
+        Source singing style: Falsetto
+      </div>
+      <table style="width: 80%; margin: auto;">
+        <tr>
+          <td style="width: 20%">Source</td>
+          <td style="width: 80%"><audio controls style="width: 100%"><source src="gt_final/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_gt.wav" type="audio/wav"></audio></td>
+        </tr>
+      </table>
+
+     
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>System and Description</th>
+            <th>to Breathy</th>
+            <th>to Mixed</th>
+            <th>to Pharyngeal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Target GT</td>
+            <td><audio controls><source src="gt_final/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_gt.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="gt_final/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_gt.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="gt_final/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_gt.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td>Reference Style</td>
+            <td><audio controls><source src="refs/00_Breathy_reference.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="refs/00_Mixed_reference.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="refs/00_Pharyngeal_reference.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td>NU-SVC</td>
+              <td><audio controls><source src="nusvc/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Breathy.wav" type="audio/wav"></audio></td>
+              <td><audio controls><source src="nusvc/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Mixed.wav" type="audio/wav"></audio></td>
+              <td><audio controls><source src="nusvc/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Pharyngeal.wav" type="audio/wav"></audio></td>
+          <tr>
+            <td>Ablation 1</td>
+            <td><audio controls><source src="ablation1/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="ablation1/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="ablation1/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+          </tr>
+        <tr>
+            <td>Ablation 2</td>
+              <td><audio controls><source src="ablation2/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+              <td><audio controls><source src="ablation2/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+              <td><audio controls><source src="ablation2/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+          </tr>
+        <tr>
+          <td>Ablation 3</td>
+            <td><audio controls><source src="ablation3/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="ablation3/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="ablation3/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+        </tr>
+        <tr>
+          <td>Serenade</td>
+            <td><audio controls><source src="serenade/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="serenade/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="serenade/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+        </tr>
+        <tr>
+          <td>Serenade (SiFiGAN)</td>
+            <td><audio controls><source src="serenade_sifigan/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="serenade_sifigan/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="serenade_sifigan/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+        </tr>
+        </tbody>
+      </table> 
+    
+    <br>
+
+    
+    <div class="table-description" style="width: 80%; margin: auto; text-align: center;">
+      Source singing style: Mixed
+    </div>
+    <table style="width: 80%; margin: auto;">
+      <tr>
+        <td style="width: 20%">Source</td>
+        <td style="width: 80%"><audio controls style="width: 100%"><source src="gt_final/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_gt.wav" type="audio/wav"></audio></td>
+      </tr>
+    </table>
+
+
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>System and Description</th>
+          <th>to Breathy</th>
+          <th>to Falsetto</th>
+          <th>to Pharyngeal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Target GT</td>
+          <td><audio controls><source src="gt_final/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_gt.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="gt_final/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_gt.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="gt_final/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_gt.wav" type="audio/wav"></audio></td>
+        </tr>
+        <tr>
+          <td>Reference Style</td>
+          <td><audio controls><source src="refs/00_Breathy_reference.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="refs/00_Falsetto_reference.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="refs/00_Pharyngeal_reference.wav" type="audio/wav"></audio></td>
+        </tr>
+        <tr>
+          <td>NU-SVC</td>
+            <td><audio controls><source src="nusvc/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Breathy.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="nusvc/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Falsetto.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="nusvc/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Pharyngeal.wav" type="audio/wav"></audio></td>
+        <tr>
+          <td>Ablation 1</td>
+          <td><audio controls><source src="ablation1/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="ablation1/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="ablation1/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+        </tr>
+      <tr>
+          <td>Ablation 2</td>
+            <td><audio controls><source src="ablation2/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="ablation2/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="ablation2/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+        </tr>
+      <tr>
+        <td>Ablation 3</td>
+          <td><audio controls><source src="ablation3/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="ablation3/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="ablation3/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+      </tr>
+      <tr>
+        <td>Serenade</td>
+          <td><audio controls><source src="serenade/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="serenade/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="serenade/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+      </tr>
+      <tr>
+        <td>Serenade (SiFiGAN)</td>
+          <td><audio controls><source src="serenade_sifigan/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="serenade_sifigan/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="serenade_sifigan/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_Alto-2_Pharyngeal.wav" type="audio/wav"></audio></td>
+      </tr>
+      </tbody>
+    </table> 
+
+    <br>
+
+    <div class="table-description" style="width: 80%; margin: auto; text-align: center;">
+      <b>Source singing style: Pharyngeal</b>
+    </div>
+    <table style="width: 80%; margin: auto;">
+      <tr>
+        <td style="width: 20%">Source</td>
+        <td style="width: 80%"><audio controls style="width: 100%"><source src="gt_final/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_gt.wav" type="audio/wav"></audio></td>
+      </tr>
+    </table>
+
+
+    <div class="table-description" style="width: 80%; margin: auto; text-align: center;"></div>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>System and Description</th>
+          <th>to Breathy</th>
+          <th>to Falsetto</th>
+          <th>to Mixed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Target GT</td>
+          <td><audio controls><source src="gt_final/English_EN-Alto-2_Breathy_What_Are_Words_Breathy_Group_0010_gt.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="gt_final/English_EN-Alto-2_Falsetto_What_Are_Words_Falsetto_Group_0010_gt.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="gt_final/English_EN-Alto-2_Mixed_Voice_What_Are_Words_Mixed_Voice_Group_0010_gt.wav" type="audio/wav"></audio></td>
+        </tr>
+        <tr>
+          <td>Reference Style</td>
+          <td><audio controls><source src="refs/00_Breathy_reference.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="refs/00_Falsetto_reference.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="refs/00_Mixed_reference.wav" type="audio/wav"></audio></td>
+        </tr>
+        <tr>
+          <td>NU-SVC</td>
+            <td><audio controls><source src="nusvc/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Breathy.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="nusvc/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Falsetto.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="nusvc/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Mixed.wav" type="audio/wav"></audio></td>
+        <tr>
+          <td>Ablation 1</td>
+          <td><audio controls><source src="ablation1/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="ablation1/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="ablation1/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+        </tr>
+      <tr>
+          <td>Ablation 2</td>
+            <td><audio controls><source src="ablation2/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="ablation2/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="ablation2/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+        </tr>
+      <tr>
+        <td>Ablation 3</td>
+          <td><audio controls><source src="ablation3/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="ablation3/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="ablation3/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+      </tr>
+      <tr>
+        <td>Serenade</td>
+          <td><audio controls><source src="serenade/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="serenade/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="serenade/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+      </tr>
+      <tr>
+        <td>Serenade (SiFiGAN)</td>
+          <td><audio controls><source src="serenade_sifigan/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Breathy.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="serenade_sifigan/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Falsetto.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="serenade_sifigan/English_EN-Alto-2_Pharyngeal_What_Are_Words_Pharyngeal_Group_0010_Alto-2_Mixed.wav" type="audio/wav"></audio></td>
+      </tr>
+      </tbody>
+    </table> 
+      
+
+  </body>
+</html>
